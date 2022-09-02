@@ -5,7 +5,7 @@
     height: 850px;
     border-radius: 60px;
     padding-top: 20px;
-  }
+}
 
 #wrapper {
     width: 500px;
@@ -19,7 +19,7 @@
 
   h1{
     font-family: Arial;
-    color: EEEEEE;
+    color: #EEEEEE;
     font-weight: 2000;
     font-size: 35pt;
     text-align: center;

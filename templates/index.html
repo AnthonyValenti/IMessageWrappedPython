@@ -6,6 +6,7 @@
     <body>
 
       <h1>iMessageWrapped 2022</h1>
+
       <div id="phone">
         <div id="wrapper">
           <div class="chat">
@@ -210,17 +211,14 @@
   
                      ];
   var chatDelay = 0;
-  
+
   function onRowAdded() {
     $('.chat-container').animate({
       scrollTop: $('.chat-container').prop('scrollHeight')
     });
   };
   $.each(chatMessages, function(index, obj) {
-    chatDelay = chatDelay + 1000;
-    chatDelay2 = chatDelay + obj.delay;
-    chatDelay3 = chatDelay2 + 10;
-    scrollDelay = chatDelay;
+
     msgname = "." + obj.name;
     msginner = ".messageinner-" + obj.name;
     spinner = ".sp-" + obj.name;
@@ -232,8 +230,6 @@
     setTimeout(onRowAdded, chatDelay3);
     chatDelay = chatDelay3;
   });
-
-
 
   </script>
 </html> 

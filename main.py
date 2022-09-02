@@ -1,4 +1,3 @@
-from pydoc import render_doc
 import re
 import sqlite3
 import getpass

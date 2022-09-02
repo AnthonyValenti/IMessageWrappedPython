@@ -24,8 +24,8 @@
     </body>
  
           
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script>
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script>
     var chatMessages = [{
     name: "ms1",
     msg: "Let's see my iMessageWrapped!",
@@ -218,7 +218,10 @@
     });
   };
   $.each(chatMessages, function(index, obj) {
-
+    chatDelay = chatDelay + 1000;
+    chatDelay2 = chatDelay + obj.delay;
+    chatDelay3 = chatDelay2 + 10;
+    scrollDelay = chatDelay;
     msgname = "." + obj.name;
     msginner = ".messageinner-" + obj.name;
     spinner = ".sp-" + obj.name;

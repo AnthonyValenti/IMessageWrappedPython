@@ -1,0 +1,242 @@
+<html>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <head>
+        <title>iMessageWrapped 2022</title>
+    </head>
+    <body>
+
+      <h1>iMessageWrapped 2022</h1>
+      <div id="phone">
+        <div id="wrapper">
+          <div class="chat">
+            <div class="chat-container">
+              <div class="chat-listcontainer">
+            
+                <ul class="chat-message-list">
+                </ul>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+ 
+          
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script>
+    var chatMessages = [{
+    name: "ms1",
+    msg: "Let's see my iMessageWrapped!",
+    delay: 1000,
+    align: "right"
+  },
+  {
+    name: "ms2",
+    msg: "Let's get started! You sent a total of {{textSent}} messages for a combined {{charsSent}} characters in 2022",
+    delay: 2000,
+    align: "left"
+  },
+  {
+    name: "ms3",
+    msg: "And received {{textReceived}} messages for a whopping {{charsReceived}} total characters, you must be pretty busy with all these messages!",
+    delay: 2000,
+    align: "left"
+  },
+  {
+    name: "ms4",
+    msg: "awesome, what were my most frequent messages?",
+    delay: 2000,
+    align: "right"
+  },
+  {
+    name: "ms5",
+    msg: "Here are your most sent texts containing 2 or more characters",
+    delay: 1000,
+    align: "left"
+  },
+  {
+    name: "ms6",
+    msg: "1.{{mostSent2_1}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms7",
+    msg: "2.{{mostSent2_2}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms8",
+    msg: "3.{{mostSent2_3}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms9",
+    msg: "However your most sent texts containing 5 or more characters can be a bit more interesting!",
+    delay: 1000,
+    align: "left"
+  },
+  {
+    name: "ms10",
+    msg: "1.{{mostSent5_1}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms11",
+    msg: "2.{{mostSent5_2}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms12",
+    msg: "3.{{mostSent5_3}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms13",
+    msg: "Wow thanks for all this cool information!",
+    delay: 1000,
+    align: "right"
+  },
+  {
+    name: "ms14",
+    msg: "Which of my friends did I message the most this year?",
+    delay: 1000,
+    align: "right"
+  },
+  {
+    name: "ms15",
+    msg: "Your most talked to friends were as follows",
+    delay: 1000,
+    align: "left"
+  },
+  {
+    name: "ms16",
+    msg: "1.{{mostTalked_1}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms17",
+    msg: "2.{{mostTalked_2}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms18",
+    msg: "3.{{mostTalked_3}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms19",
+    msg: "4.{{mostTalked_4}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms20",
+    msg: "5.{{mostTalked_5}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms21",
+    msg: "This is the best! Can you show me what times most of my messages were from?",
+    delay: 1000,
+    align: "right"
+  },
+  {
+    name: "ms22",
+    msg: "For sure! Most of your texts sent were around {{timeSent}} {{amPmSent}}, while you received most of your messages around {{timeReceived}} {{amPmReceived}}",
+    delay: 1000,
+    align: "left"
+  },
+  {
+    name: "ms23",
+    msg: "Any other time related message information?",
+    delay: 1000,
+    align: "right"
+  },
+  {
+    name: "ms24",
+    msg: "Coming right up! These people messaged you the most between midnight and 3 AM",
+    delay: 1000,
+    align: "left"
+  },
+  {
+    name: "ms25",
+    msg: "1.{{sentNight_1}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms26",
+    msg: "2.{{sentNight_2}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms27",
+    msg: "3.{{sentNight_3}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms28",
+    msg: "4.{{sentNight_4}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms29",
+    msg: "5.{{sentNight_5}}",
+    delay: 500,
+    align: "left"
+  },
+  {
+    name: "ms29",
+    msg: "Any 'you up?' texts you regret sending to those numbers?",
+    delay: 500,
+    align: "left"
+  }
+
+
+  
+                     ];
+  var chatDelay = 0;
+  
+  function onRowAdded() {
+    $('.chat-container').animate({
+      scrollTop: $('.chat-container').prop('scrollHeight')
+    });
+  };
+  $.each(chatMessages, function(index, obj) {
+    chatDelay = chatDelay + 1000;
+    chatDelay2 = chatDelay + obj.delay;
+    chatDelay3 = chatDelay2 + 10;
+    scrollDelay = chatDelay;
+    msgname = "." + obj.name;
+    msginner = ".messageinner-" + obj.name;
+    spinner = ".sp-" + obj.name;
+    $(".chat-message-list").append("<li class='message-" + obj.align + " " + obj.name + "' hidden><div class='sp-" + obj.name + "'><span class='spinme-" + obj.align + "'><div class='spinner'><div class='bounce1'></div><div class='bounce2'></div><div class='bounce3'></div></div></span></div><div class='messageinner-" + obj.name + "' hidden><span class='message-text'>" + obj.msg + "</span>" + "</div></li>");
+    $(msgname).delay(chatDelay).fadeIn();
+    $(spinner).delay(chatDelay2).hide(1);
+    $(msginner).delay(chatDelay3).fadeIn();
+    setTimeout(onRowAdded, chatDelay);
+    setTimeout(onRowAdded, chatDelay3);
+    chatDelay = chatDelay3;
+  });
+
+
+
+  </script>
+</html> 
+
+
+  

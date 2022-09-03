@@ -1,5 +1,6 @@
 import re
 import sqlite3
+import sys
 import getpass
 from flask import Flask, render_template
 import webbrowser
@@ -27,7 +28,13 @@ def getResults(query):
 
 
 
-app = Flask(__name__)
+if getattr(sys, 'frozen', False):
+    template_folder = os.path.join(sys._MEIPASS, 'templates')
+    static_folder = os.path.join(sys._MEIPASS, 'static')
+    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
+else:
+    app = Flask(__name__)
+    
 @app.route("/")
 def main():
     mostSent2 =getResults(mostSentText2())

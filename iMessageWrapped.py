@@ -29,13 +29,8 @@ def getResults(query):
 
 
 
-if getattr(sys, 'frozen', False):
-    template_folder = os.path.join(sys._MEIPASS, 'templates')
-    static_folder = os.path.join(sys._MEIPASS, 'static')
-    app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
-else:
-    app = Flask(__name__)
-    
+
+app = Flask(__name__)
 @app.route("/")
 def main():
     mostSent2 =getResults(mostSentText2())
@@ -96,5 +91,5 @@ def open_browser():
       
 if __name__ == '__main__':
     Timer(1,open_browser).start()
-    app.run(port=5000)
+    app.run()
 

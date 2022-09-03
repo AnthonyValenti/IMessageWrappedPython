@@ -1,4 +1,0 @@
-([('iMessageWrapped',
-   '/Users/anthonyvalenti/Documents/VSCode '
-   'Files/IMessageWrappedPython/dist/iMessageWrapped',
-   'EXECUTABLE')],)

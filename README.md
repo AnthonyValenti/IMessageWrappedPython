@@ -11,3 +11,5 @@
  
  # How to use
  You can downlad the source code and execute it from your own IDE. Currently working on packaging the program into a single executable file
+
+![Example Output](https://user-images.githubusercontent.com/57304403/197655450-a1f0af8a-6f74-4a96-9952-f606bcd0bc0c.png)
